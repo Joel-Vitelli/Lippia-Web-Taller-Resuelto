@@ -1,7 +1,7 @@
 Feature: E-commerce de prueba
 
   @Smoke
-  Scenario: Navegar al menu "Women" - "Tops" - "T-Shirts"
+  Scenario: Navegar al menu "Women"-"Tops"-"T-Shirts"
     Given Estamos en la pagina de Compras
     When seleccionamos del menu 'Women' - 'Tops' - 'T-shirts'
     Then se visualiza el menu de las secciones navegadas 'Home> Women>Tops>T-shirts'
@@ -10,7 +10,7 @@ Feature: E-commerce de prueba
     And se muestra al menos un item en la sección de productos
 
   @Smoke
-  Scenario Outline: Navegar al menu '<Menu>' - '<submenu1>' - '<submenu2>'
+  Scenario Outline: Navegar al menu "<Menu>"-"<submenu1>"-"<submenu2>"
     Given Estamos en la pagina de Compras
     When seleccionamos del menu '<menu>' - '<submenu1>' - '<submenu2>'
     Then se visualiza el menu de las secciones navegadas 'Home> <menu>><submenu1>><submenu2>'
@@ -19,10 +19,10 @@ Feature: E-commerce de prueba
     And se muestra al menos un item en la sección de productos
 
     Examples:
-    | menu			| submenu1				| submenu2 			|
-    | Women			| Tops					| T-shirts			|
-    | Women			| Tops					| Blouses			|
-    | Women			| Dresses				| Evening Dresses	|
+    | menu	| submenu1	| submenu2  			|
+    | Women	| Tops			| T-shirts	 	  	|
+    | Women	| Tops			| Blouses		    	|
+    | Women	| Dresses		| Evening Dresses	|
 
   @Smoke
   Scenario Outline: Agregar producto al carrito exitosamente
@@ -34,7 +34,7 @@ Feature: E-commerce de prueba
     And se verifica el producto agregado desde el carrito de compras
 
     Examples:
-    | menu			| submenu1				| submenu2 			|
-    | Women			| Tops					| T-shirts			|
-    | Women			| Tops					| Blouses			|
-    | Women			| Dresses				| Evening Dresses	|
+    | menu	| submenu1	| submenu2 			  |
+    | Women	| Tops			| T-shirts			  |
+    | Women	| Tops			| Blouses		    	|
+    | Women	| Dresses		| Evening Dresses	|
