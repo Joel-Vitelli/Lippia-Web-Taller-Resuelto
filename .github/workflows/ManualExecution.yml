@@ -41,5 +41,5 @@ jobs:
       if: ${{ always() }}
       uses: actions/upload-artifact@v2
       with:
-        name: Reporte-COR-Login
-        path: target/Reports/
+        name: Report-Lippia-Web
+        path: target/reports/
