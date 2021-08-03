@@ -121,7 +121,7 @@
 					<suiteXmlFiles>
 						<suiteXmlFile>${runner}</suiteXmlFile>
 					</suiteXmlFiles>
-					<testFailureIgnore>true</testFailureIgnore>
+					<testFailureIgnore>false</testFailureIgnore>
 				</configuration>
 			</plugin>
 		</plugins>
