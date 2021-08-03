@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>io.lippia</groupId>
+		<artifactId>root</artifactId>
+		<version>3.2.3.8</version>
+	</parent>
+
+	<groupId>testingUY</groupId>
+	<artifactId>lippiaWebTestingUY</artifactId>
+	<version>1.0.0</version>
+	<name>crowdar_automation</name>
+
+	<packaging>jar</packaging>
+
+	<properties>
+		<maven.build.timestamp.format>yyyyMMdd_HHmm</maven.build.timestamp.format>
+
+		<runner>testngSecuencial.xml</runner>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- defult configuration chrome local -->
+		<crowdar.projectType></crowdar.projectType>
+		<crowdar.driver.capabilities.json_path></crowdar.driver.capabilities.json_path>
+		<crowdar.setupStrategy></crowdar.setupStrategy>
+		<crowdar.driverHub></crowdar.driverHub>
+
+		<!-- cucumber options -->
+		<cucumber.stepsDefinitions>--glue / </cucumber.stepsDefinitions>
+		<cucumber.hooks>--glue	com/crowdar/bdd/cukes/hooks</cucumber.hooks>
+		<cucumber.tags>--tags '@Smoke'</cucumber.tags>
+		<cucumber.reporters>--plugin pretty --plugin testingUY.web.reporters.CucumberReporter:</cucumber.reporters>
+		<crowdar.cucumber.option>src/test/resources/web/features ${cucumber.hooks} ${cucumber.stepsDefinitions} --tags 'not @Ignore' ${cucumber.tags} ${cucumber.reporters}</crowdar.cucumber.option>
+
+		<!-- client project custom properties -->
+		<web-app.url>http://automationpractice.com/index.php</web-app.url>
+
+	</properties>
+	<profiles>
+	
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<!--    Profiles related to Browser requirementes    -->
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		
+		<profile>
+			<id>chrome</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<crowdar.projectType>WEB_CHROME</crowdar.projectType>
+				<crowdar.driver.capabilities.json_path>src/main/resources/browsers/chromeCapabilities.json</crowdar.driver.capabilities.json_path>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>firefox</id>
+			<properties>
+				<crowdar.projectType>WEB_FIREFOX</crowdar.projectType>
+				<crowdar.driver.capabilities.json_path>src/main/resources/browsers/firefoxCapabilities.json</crowdar.driver.capabilities.json_path>
+			</properties>
+		</profile>
+
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<!--   Profiles related to Driver Instance petition   -->
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<crowdar.setupStrategy>web.DownloadLatestStrategy</crowdar.setupStrategy>
+			</properties>
+		</profile>
+
+				
+		<profile> 
+			<id>stack_local</id>
+			<properties>
+				<crowdar.setupStrategy>web.SeleniumGridStrategy</crowdar.setupStrategy>
+				<!-- you can set your seleniumGrid url -->
+				<crowdar.driverHub>http://localhost:4444/wd/hub</crowdar.driverHub>
+			</properties>
+		</profile>
+
+	</profiles>
+	<dependencies>
+		<dependency>
+			<groupId>io.lippia</groupId>
+			<artifactId>core</artifactId>
+			<version>3.2.3.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.lippia.report</groupId>
+			<artifactId>extentreports-cucumber4-adapter</artifactId>
+			<version>1.1.0.10</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<filters>
+			<filter>src/main/resources/cucumber.properties</filter>
+		</filters>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.1</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>${runner}</suiteXmlFile>
+					</suiteXmlFiles>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>crowdarRepo</id>
+			<name>crowdar-repository</name>
+			<url>https://nexus-v3-repositories.automation.crowdaronline.com/repository/maven-public/</url>
+		</repository>
+	</repositories>
+
+
+</project>
