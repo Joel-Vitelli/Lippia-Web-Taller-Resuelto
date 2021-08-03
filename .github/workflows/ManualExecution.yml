@@ -35,7 +35,7 @@ jobs:
         sudo apt install ./google-chrome-stable_current_amd64.deb
       
     - name: Step 4 - Executing Automated Tests
-      run: mvn test -Pheadless -Pchrome -Pstaging2 -Dcucumber.filter.tags="${{ github.event.inputs.tag }}" 
+      run: mvn test -PchromeHeadless -Dcucumber.filter.tags="${{ github.event.inputs.tag }}" 
       
     - name: Step 5 - Generate Artifacts
       if: ${{ always() }}
