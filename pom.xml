@@ -61,6 +61,14 @@
 				<crowdar.driver.capabilities.json_path>src/main/resources/browsers/firefoxCapabilities.json</crowdar.driver.capabilities.json_path>
 			</properties>
 		</profile>
+		
+		<profile>
+			<id>chromeHeadless</id>
+			<properties>
+				<crowdar.projectType>WEB_CHROME</crowdar.projectType>
+				<crowdar.driver.capabilities.json_path>src/main/resources/browsers/chromeCapabilitiesGrid.json</crowdar.driver.capabilities.json_path>
+			</properties>
+		</profile>
 
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<!--   Profiles related to Driver Instance petition   -->
