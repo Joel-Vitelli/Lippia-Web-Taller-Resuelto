@@ -1,8 +1,8 @@
-package testingUY.web.constants;
+package lippiaTaller.web.constants;
 
 import org.openqa.selenium.WebElement;
 
-public class TestingUYConstants {
+public class LippiaTallerConstants {
 
 
     public static final String SUBMENU_1_XPATH = "xpath://a[contains(@title,'%s')]";

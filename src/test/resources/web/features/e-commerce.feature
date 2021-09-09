@@ -1,6 +1,7 @@
 Feature: E-commerce de prueba
 
   @Smoke
+  #OPCIONAL
   Scenario: Navegar al menu "Women"-"Tops"-"T-Shirts"
     Given Estamos en la pagina de Compras
     When seleccionamos del menu 'Women' - 'Tops' - 'T-shirts'
@@ -9,7 +10,7 @@ Feature: E-commerce de prueba
     And se visualiza la lista de filtros a la izquierda con el título 'CATALOG'
     And se muestra al menos un item en la sección de productos
 
-  @Smoke
+  @Smoke @Taller
   Scenario Outline: Navegar al menu "<Menu>"-"<submenu1>"-"<submenu2>"
     Given Estamos en la pagina de Compras
     When seleccionamos del menu '<menu>' - '<submenu1>' - '<submenu2>'
@@ -25,6 +26,7 @@ Feature: E-commerce de prueba
     | Women	| Dresses		| Evening Dresses	|
 
   @Smoke
+  #OPCIONAL
   Scenario Outline: Agregar producto al carrito exitosamente
     Given Estamos en la pagina de Compras
     When seleccionamos del menu '<menu>' - '<submenu1>' - '<submenu2>'

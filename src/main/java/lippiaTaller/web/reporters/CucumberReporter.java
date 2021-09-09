@@ -1,4 +1,4 @@
-package testingUY.web.reporters;
+package lippiaTaller.web.reporters;
 
 import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberGenericAdapter;
 import com.crowdar.driver.DriverManager;

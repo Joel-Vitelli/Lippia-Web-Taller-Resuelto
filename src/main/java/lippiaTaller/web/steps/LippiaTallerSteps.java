@@ -1,55 +1,55 @@
-package testingUY.web.steps;
+package lippiaTaller.web.steps;
 
 import com.crowdar.core.PageSteps;
 import io.cucumber.java.en.*;
-import testingUY.web.services.TestingUYService;
+import lippiaTaller.web.services.LippiaTallerService;
 
 
-public class TestingUYSteps extends PageSteps {
+public class LippiaTallerSteps extends PageSteps {
 
     @Given("Estamos en la pagina de Compras")
     public void estamosEnLaPaginaDeCompras() {
-        TestingUYService.navegarWeb();
+        LippiaTallerService.navegarWeb();
     }
 
     @When("seleccionamos del menu '(.*)' - '(.*)' - '(.*)'")
     public void seleccionamosDelMenu(String menu, String subMenu1, String subMenu2) {
-        TestingUYService.navegarMenu(menu,subMenu2);
+        LippiaTallerService.navegarMenu(menu,subMenu2);
     }
 
     @Then("se visualiza el menu de las secciones navegadas '(.*)'")
     public void seVisualizaElMenuDeLasSeccionesNavegadas(String navegacion) {
-        TestingUYService.verificarNavegacion(navegacion);
+        LippiaTallerService.verificarNavegacion(navegacion);
     }
 
     @And("se visualiza el encabezado de la sección con título '(.*)'")
     public void seVisualizaElEncabezadoDeLaSecciónConTítulo(String encabezado) {
-        TestingUYService.verificarEncabezado(encabezado);
+        LippiaTallerService.verificarEncabezado(encabezado);
     }
 
     @And("se visualiza la lista de filtros a la izquierda con el título '(.*)'")
     public void seVisualizaLaListaDeFiltrosALaIzquierdaConElTítulo(String tituloLista) {
-        TestingUYService.verificarTituloListaFiltros(tituloLista);
+        LippiaTallerService.verificarTituloListaFiltros(tituloLista);
     }
 
     @And("se muestra al menos un item en la sección de productos")
     public void seMuestraAlMenosUnItemEnLaSecciónDeProductos() {
-        TestingUYService.verificarItems();
+        LippiaTallerService.verificarItems();
     }
 
     @And("agregamos el primer producto de la lista al carrito haciendo click en {string}")
     public void agregamosElPrimerProductoDeLaListaAlCarritoHaciendoClickEn(String arg0) {
-        TestingUYService.addItemToCar();
+        LippiaTallerService.addItemToCar();
     }
 
     @Then("se verifica que se agrego el carrito aceptando la ventana pop-up que aparece")
     public void seVerificaQueSeAgregoElCarritoAceptandoLaVentanaPopUpQueAparece() {
-        TestingUYService.clickModalCompra();
+        LippiaTallerService.clickModalCompra();
     }
 
     @And("se verifica el producto agregado desde el carrito de compras")
     public void seVerificaElProductoAgregadoDesdeElCarritoDeCompras() {
-        TestingUYService.verificarItemEnCarrito();
+        LippiaTallerService.verificarItemEnCarrito();
     }
 
 }

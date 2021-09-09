@@ -1,20 +1,18 @@
-package testingUY.web.services;
+package lippiaTaller.web.services;
 
 import com.crowdar.core.PropertyManager;
 import com.crowdar.core.actions.ActionManager;
 import com.crowdar.driver.DriverManager;
+import lippiaTaller.web.constants.LippiaTallerConstants;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-import org.testng.annotations.Test;
-import testingUY.web.constants.TestingUYConstants;
 
 import java.util.List;
 
 import static com.crowdar.core.actions.WebActionManager.*;
 
-public class TestingUYService extends ActionManager {
+public class LippiaTallerService extends ActionManager {
 
     private static final ThreadLocal<String> descData = new ThreadLocal<>();
 
@@ -23,8 +21,8 @@ public class TestingUYService extends ActionManager {
     }
 
     public static void navegarMenu(String subMenu1, String subMenu2){
-        hoverItem(TestingUYConstants.SUBMENU_1_XPATH,subMenu1);
-        click(TestingUYConstants.SUBMENU_2_XPATH,subMenu2);
+        hoverItem(LippiaTallerConstants.SUBMENU_1_XPATH,subMenu1);
+        click(LippiaTallerConstants.SUBMENU_2_XPATH,subMenu2);
     }
 
     public static void hoverItem(String locator, String locatorReemp){
@@ -40,41 +38,41 @@ public class TestingUYService extends ActionManager {
 
     public static void verificarNavegacion(String navegacion){
         String[] listaNavegacion = navegacion.split("Home");
-        Assert.assertEquals(getText(TestingUYConstants.NAVEGACION_XPATH), listaNavegacion[1], "La navegación no es correcta");
+        Assert.assertEquals(getText(LippiaTallerConstants.NAVEGACION_XPATH), listaNavegacion[1], "La navegación no es correcta");
     }
 
     public static void verificarEncabezado(String encabezado){
-        waitVisibility(TestingUYConstants.ENCABEZADO_XPATH);
-        Assert.assertEquals(getText(TestingUYConstants.ENCABEZADO_XPATH), encabezado, "El encabezado es incorrecto");
+        waitVisibility(LippiaTallerConstants.ENCABEZADO_XPATH);
+        Assert.assertEquals(getText(LippiaTallerConstants.ENCABEZADO_XPATH), encabezado, "El encabezado es incorrecto");
     }
 
     public static void verificarTituloListaFiltros(String tituloListaFiltros){
-        waitVisibility(TestingUYConstants.TITULO_FILTRO_XPATH);
-        Assert.assertEquals(getText(TestingUYConstants.TITULO_FILTRO_XPATH), tituloListaFiltros, "El titulo de los filtros no es correcto");
+        waitVisibility(LippiaTallerConstants.TITULO_FILTRO_XPATH);
+        Assert.assertEquals(getText(LippiaTallerConstants.TITULO_FILTRO_XPATH), tituloListaFiltros, "El titulo de los filtros no es correcto");
     }
 
     public static void verificarItems(){
-        waitVisibilities(TestingUYConstants.LISTA_ITEMS_XPATH);
-        List<WebElement> listaItems = getElements(TestingUYConstants.LISTA_ITEMS_XPATH);
+        waitVisibilities(LippiaTallerConstants.LISTA_ITEMS_XPATH);
+        List<WebElement> listaItems = getElements(LippiaTallerConstants.LISTA_ITEMS_XPATH);
         Assert.assertNotNull(listaItems, "La lista de items esta vacía");
     }
 
     public static void addItemToCar(){ //usamos un ThreadLocal para guardar la información de la descripción del Item y usarla en el proximo step
-        waitVisibilities(TestingUYConstants.LISTA_ITEMS_XPATH);
-        List<WebElement> listaItems = getElements(TestingUYConstants.LISTA_ITEMS_XPATH);
+        waitVisibilities(LippiaTallerConstants.LISTA_ITEMS_XPATH);
+        List<WebElement> listaItems = getElements(LippiaTallerConstants.LISTA_ITEMS_XPATH);
         hoverItem(listaItems.get(0));
         descData.set(listaItems.get(0).getAttribute("innerText").split("\n")[2]);
-        click(TestingUYConstants.ADD_TO_CAR_XPATH);
+        click(LippiaTallerConstants.ADD_TO_CAR_XPATH);
     }
 
     public static void clickModalCompra(){
-        click(TestingUYConstants.PROCED_TO_CHECKOUT_XPATH);
+        click(LippiaTallerConstants.PROCED_TO_CHECKOUT_XPATH);
     }
 
     public static void verificarItemEnCarrito(){
-        hoverItem(TestingUYConstants.CARRITO_COMPRAS_XPATH,"");
-        waitVisibility(TestingUYConstants.ITEM_IN_CART_XPATH);
-        Assert.assertEquals(descData.get(), getAttribute(TestingUYConstants.ITEM_IN_CART_XPATH, "title"));
+        hoverItem(LippiaTallerConstants.CARRITO_COMPRAS_XPATH,"");
+        waitVisibility(LippiaTallerConstants.ITEM_IN_CART_XPATH);
+        Assert.assertEquals(descData.get(), getAttribute(LippiaTallerConstants.ITEM_IN_CART_XPATH, "title"));
     }
 
 }
