@@ -4,7 +4,7 @@ on:
     inputs:
       tag:        
         description: 'Tag'        
-        default: '@Smoke'        
+        default: '@Taller'
         required: true
 
 jobs:  
