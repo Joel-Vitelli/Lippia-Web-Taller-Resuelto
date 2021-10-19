@@ -1,3 +1,4 @@
+@Tag
 Feature: E-commerce de prueba
 
   @Smoke
@@ -20,10 +21,10 @@ Feature: E-commerce de prueba
     And se muestra al menos un item en la sección de productos
 
     Examples:
-    | menu	| submenu1	| submenu2  			|
-    | Women	| Tops			| T-shirts	 	  	|
-    | Women	| Tops			| Blouses		    	|
-    | Women	| Dresses		| Evening Dresses	|
+      | menu  | submenu1 | submenu2        |
+      | Women | Tops     | T-shirts        |
+      | Women | Tops     | Blouses         |
+      | Women | Dresses  | Evening Dresses |
 
   @Smoke
   #OPCIONAL
@@ -36,7 +37,7 @@ Feature: E-commerce de prueba
     And se verifica el producto agregado desde el carrito de compras
 
     Examples:
-    | menu	| submenu1	| submenu2 			  |
-    | Women	| Tops			| T-shirts			  |
-    | Women	| Tops			| Blouses		    	|
-    | Women	| Dresses		| Evening Dresses	|
+      | menu  | submenu1 | submenu2        |
+      | Women | Tops     | T-shirts        |
+      | Women | Tops     | Blouses         |
+      | Women | Dresses  | Evening Dresses |

@@ -26,6 +26,8 @@
 		<crowdar.setupStrategy></crowdar.setupStrategy>
 		<crowdar.driverHub></crowdar.driverHub>
 
+		<buildIdentifier>Local-${maven.build.timestamp}</buildIdentifier>
+
 		<!-- cucumber options -->
 		<cucumber.stepsDefinitions>--glue / </cucumber.stepsDefinitions>
 		<cucumber.hooks>--glue	com/crowdar/bdd/cukes/hooks</cucumber.hooks>
@@ -94,12 +96,28 @@
 			</properties>
 		</profile>
 
+		<profile>
+			<id>reportServer</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<cucumber.reporters>--plugin pretty --plugin lippiaTaller.web.reporters.Reporter:</cucumber.reporters>
+			</properties>
+		</profile>
+
 	</profiles>
 	<dependencies>
 		<dependency>
 			<groupId>io.lippia</groupId>
 			<artifactId>core</artifactId>
 			<version>3.2.3.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.lippia.report</groupId>
+			<artifactId>cucumber4-adapter</artifactId>
+			<version>1.7.1</version>
 		</dependency>
 
 		<dependency>
@@ -118,6 +136,15 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.22.1</version>
 				<configuration>
+					<systemPropertyVariables>
+						<LIPPIA_RS_API_HOST>https://api.demo.lippia.io/</LIPPIA_RS_API_HOST>
+						<LIPPIA_RS_REPORT_NAME>Taller Lippia Web - Resuelto - ${buildIdentifier}</LIPPIA_RS_REPORT_NAME>
+						<LIPPIA_RS_PROJECT_NAME>Taller Lippia Web - Resuelto</LIPPIA_RS_PROJECT_NAME>
+
+						<build.identifier>${buildIdentifier}</build.identifier>
+
+
+					</systemPropertyVariables>
 					<suiteXmlFiles>
 						<suiteXmlFile>${runner}</suiteXmlFile>
 					</suiteXmlFiles>
